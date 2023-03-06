@@ -26,7 +26,8 @@ Route::get('/logout',[SuperAdminController::class, 'logout']);
 //Category Routes
 
 Route::get('/categories',[CategoryController::class,'index']);
-Route::get('/categories/create',[CategoryController::class,'create']);
+
+ Route::post('/categories/create',[CategoryController::class,'create']);
 
 
 //FrontEnd Routes

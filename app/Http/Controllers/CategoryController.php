@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -34,7 +35,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+
+        $category->id = $request->category;
+        $category->name= $request->name;
+        $category->description = $request->description;
+
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('category',$filename);
+
+            $category->image = $filename;
+        }
+        $category->save();
+        return redirect('/category/create')->with('Succesfully Save!');
     }
 
     /**

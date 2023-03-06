@@ -22,7 +22,7 @@
             </div>
 
             <div class="box-content">
-                <form class="form-horizontal" action="{{url('/categories/')}}" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{url('/categories/create')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <fieldset>
                         <div class="control-group">
